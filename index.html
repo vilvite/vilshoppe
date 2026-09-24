@@ -249,10 +249,10 @@ const products=[
 {id:12,name:'Elbil – kompakt',category:'Bil',price:189900,oldPrice:209900,emoji:'🔋',badge:'PRISKUTT!',urgency:'Kampanje denne uken',deferFee:3990,plans:[12,24,36]},
 {id:13,name:'Helgetur til storby',category:'Reise',price:4490,oldPrice:5990,emoji:'✈️',badge:'WEEKEND DEAL',urgency:'Få plasser til denne prisen',deferFee:249,plans:[3,6,12]},
 {id:14,name:'Solferie – 1 uke',category:'Reise',price:9990,oldPrice:12990,emoji:'🏖️',badge:'SPAR 3 000!',urgency:'Bestillingsfrist snart',deferFee:499,plans:[3,6,12]},
-{id:15,name:'Konsertbillett',category:'Opplevelser',price:1190,oldPrice:1490,emoji:'🎫',badge:'HOT!',urgency:'Begrenset antall billetter',deferFee:79,plans:[3,6]},
+{id:15,name:'Konsertbillett',category:'Opplevelser',price:1190,oldPrice:1490,emoji:'🎫',badge:'HOT!',urgency:'Early bird: Siste dag!',deferFee:79,plans:[3,6]},
 {id:16,name:'Pro gamingstol RGB',category:'Gaming',price:3490,oldPrice:4490,emoji:'🪑',badge:'GAMER DEAL',urgency:'Kun 4 igjen',deferFee:199,plans:[3,6,12]}
 ];
-const fees={3:99,6:249,12:599,24:599,36:699},simpleRates={24:0.06,36:0.08},money=n=>new Intl.NumberFormat('nb-NO',{style:'currency',currency:'NOK',maximumFractionDigits:0}).format(n);
+const fees={3:99,6:249,12:499,24:499,36:499},simpleRates={24:0.08,36:0.12},money=n=>new Intl.NumberFormat('nb-NO',{style:'currency',currency:'NOK',maximumFractionDigits:0}).format(n);
 let cart={},payment={},filter='Alle';
 function effRate(price,months,fee){const pay=(price+fee)/months;let lo=0,hi=2;for(let k=0;k<90;k++){const r=(lo+hi)/2;let pv=0;for(let t=1;t<=months;t++)pv+=pay/Math.pow(1+r,t);if(pv>price)lo=r;else hi=r}const monthly=(lo+hi)/2;return (Math.pow(1+monthly,12)-1)*100}
 function choice(p){return payment[p.id]??'now'}
